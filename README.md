@@ -20,7 +20,7 @@ The sections below show how to test the Cloud Function on a local test server an
 | GCP_PROJECT_ID | Google Cloud project ID, like `my-project-000000`|
 | GCP_REGION | Google Cloud region for registry, like `us-central1` |
 | GCP_REGISTRY_ID | Google Cloud registry ID you provided to create the registry |
-| GCP_SERVICE_ACCOUNT |base64 encoding of the JSON formatted GCP service account credentials provided by Google when you created the service account. Example below, assuming the credentials JSON is contained in a file.<br><br>`cat <credentials.txt> | base64 -w 0` |
+| GCP_SERVICE_ACCOUNT |base64 encoding of the JSON formatted GCP service account credentials provided by Google when you created the service account. Example below, assuming the credentials JSON is contained in a file.<br><br>`cat <credentials.txt> \| base64 -w 0` |
 
 
 ### Test locally
