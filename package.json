@@ -1,0 +1,34 @@
+{
+  "name": "gcp-iot-cloud",
+  "private": false,
+  "version": "0.0.1",
+  "description": "Google Cloud function to provision device to IoT Core",
+  "main": "index.js",
+  "type":"module",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^2.1.0",
+    "@google-cloud/iot": "^2.5.0",
+    "balena-sdk": "^16.11.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balena-io-examples/gcp-iot-cloud.git"
+  },
+  "keywords": [
+    "balena",
+    "balenaCloud",
+    "google",
+    "iotcore",
+    "iot",
+    "gcp"
+  ],
+  "author": "Ken Bannister <ken@balena.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/balena-io-examples/gcp-iot-cloud/issues"
+  },
+  "homepage": "https://github.com/balena-io-examples/gcp-iot-cloud#readme"
+}
