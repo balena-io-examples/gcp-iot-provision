@@ -7,18 +7,28 @@ import util from 'util'
 const generateKeyPair = util.promisify(crypto.generateKeyPair)
 
 export async function provision(req, res) {
+    let uuid = ''
     try {
-        const uuid = req.body.uuid
+        uuid = req.body.uuid
         const creds =  { email: process.env.RESIN_EMAIL, password: process.env.RESIN_PASSWORD }
 
         await balena.auth.login(creds)
 
         // Validate device with balenaCloud
-        if (! await balena.models.device.get(uuid)) {
-            res.status(400).send("device not valid")
-            return
+        await balena.models.device.get(uuid)
+    } catch (error) {
+        console.log("Error: ", error)
+        if (error.code === balena.errors.BalenaDeviceNotFound.prototype.code
+                || error.code === balena.errors.BalenaInvalidLoginCredentials.prototype.code) {
+            res.status(400)
+        } else {
+            res.status(500)
         }
+        res.send(error)
+        return
+    }
 
+    try {
         // generate key pair; we only need the private key 
         const keyPair = await generateKeyPair('ec', {namedCurve: 'prime256v1',
             privateKeyEncoding: { type: 'pkcs8', format: 'pem'},
