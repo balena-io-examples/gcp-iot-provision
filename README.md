@@ -1,8 +1,11 @@
 # Google Cloud Function for IoT Device Provisioning
 
-This project provides a Google Cloud Function to provision a balena device with Google Cloud IoT Core. First the function verifies the device UUID with balenaCloud. Then it creates a public/private key pair and adds the device to the registry. Finally the function pushes the private key to a balena device environment variable.
+This Cloud Function allows you to synchronize device registration and state between balena and Google Cloud IoT Core in a secure and automated way. The Cloud Function may be called by a balena device, as seen in the [cloud-relay](https://github.com/balena-io-examples/cloud-relay) example.
 
-This Cloud Function allows you to synchronize device registration and state between balena and Google Cloud in a secure and automated way. The Cloud Function may be called by a balena device, as seen in the [cloud-relay](https://github.com/balena-io-examples/cloud-relay) example.
+| HTTP Method | Action |
+|-------------|--------|
+| POST | Provisions a balena device with IoT Core. First the function verifies the device UUID with balenaCloud. Then it creates a public/private key pair and adds the device to the registry. Finally the function pushes the private key to a balena device environment variable. |
+| DELETE | Removes a balena device from the IoT Core registry and removes the balena device environment variable for the private key. Essentially reverses the actions from provisioning with HTTP POST. |
 
 ## Setup and Testing
 
