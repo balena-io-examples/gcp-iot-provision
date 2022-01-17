@@ -77,6 +77,10 @@ async function handlePost(req, res) {
 
     await balena.models.device.envVar.set(req.body.uuid, 'GCP_PRIVATE_KEY',
             Buffer.from(keyPair.privateKey).toString('base64'))
+    await balena.models.device.envVar.set(req.body.uuid, 'GCP_CLIENT_PATH',
+            `${registryPath}/devices/${deviceId}`)
+    await balena.models.device.envVar.set(req.body.uuid, 'GCP_DATA_TOPIC_ROOT',
+            `/devices/${deviceId}`)
 
     console.log(`Created device ${deviceId}`)
     res.status(201).send("device created")
@@ -90,6 +94,8 @@ async function handleDelete(req, res) {
     await iot.deleteDevice({ name: `${registryPath}/devices/${deviceId}` })
 
     await balena.models.device.envVar.remove(req.body.uuid, 'GCP_PRIVATE_KEY')
+    await balena.models.device.envVar.remove(req.body.uuid, 'GCP_CLIENT_PATH')
+    await balena.models.device.envVar.remove(req.body.uuid, 'GCP_DATA_TOPIC_ROOT')
 
     console.log(`Deleted device ${deviceId}`)
     res.status(200).send("device deleted")
