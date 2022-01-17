@@ -81,6 +81,8 @@ async function handlePost(req, res) {
             `${registryPath}/devices/${deviceId}`)
     await balena.models.device.envVar.set(req.body.uuid, 'GCP_DATA_TOPIC_ROOT',
             `/devices/${deviceId}`)
+    await balena.models.device.envVar.set(req.body.uuid, 'GCP_PROJECT_ID',
+            process.env.GCP_PROJECT_ID)
 
     console.log(`Created device ${deviceId}`)
     res.status(201).send("device created")
@@ -96,6 +98,7 @@ async function handleDelete(req, res) {
     await balena.models.device.envVar.remove(req.body.uuid, 'GCP_PRIVATE_KEY')
     await balena.models.device.envVar.remove(req.body.uuid, 'GCP_CLIENT_PATH')
     await balena.models.device.envVar.remove(req.body.uuid, 'GCP_DATA_TOPIC_ROOT')
+    await balena.models.device.envVar.remove(req.body.uuid, 'GCP_PROJECT_ID')
 
     console.log(`Deleted device ${deviceId}`)
     res.status(200).send("device deleted")
