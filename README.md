@@ -8,7 +8,10 @@ This Cloud Function allows you to synchronize device registration and state betw
 | DELETE | Removes a balena device from the IoT Core registry and removes the balena device environment variable for the private key. Essentially reverses the actions from provisioning with HTTP POST. |
 
 ## Setup and Testing
+### Google Cloud setup
+The Cloud Function interacts with Google Cloud IoT Core via a NodeJS [iot.DeviceManagerClient](https://cloud.google.com/nodejs/docs/reference/iot/latest/iot/v1.devicemanagerclient) operating with service account credentials. You must setup a Google Cloud project with an IoT Core registry. The service account must have the *Cloud IoT Provisioner* role to manage device records in the IoT Core registry. See the IoT Core [documentation](https://cloud.google.com/iot/docs/how-tos) for more background.
 
+### Development setup
 Clone this repo
 ```
 $ git clone https://github.com/balena-io-examples/gcp-iot-cloud
@@ -48,15 +51,13 @@ curl -X POST http://localhost:8080 -H "Content-Type:application/json" \
 After a successful request, you should see the device appear in your IoT Core registry and a `GCP_PRIVATE_KEY` variable appear in balenaCloud for the device.
 
 ## Deploy
-To deploy to Cloud Functions, use the command below. See the [command documentation](https://cloud.google.com/sdk/gcloud/reference/functions/deploy) for the format of `env-vars-file`, which contains the variables from the table above.
+To deploy to Cloud Functions, use the command below. See the [command documentation](https://cloud.google.com/sdk/gcloud/reference/functions/deploy) for the format of `yaml-file`, which contains the variables from the table in the *Development setup* section above.
 
 ```
 gcloud functions deploy provision --runtime=nodejs14 --trigger-http \
    --env-vars-file=<yaml-file> --allow-unauthenticated \
    --service-account=<name>@<xxxx>.iam.gserviceaccount.com
 ```
-
-The service account must have the *Cloud IoT Provisioner* role to create a device record in the IoT Core registry.
 
 The result is a Cloud Function like below. Notice the `TRIGGER` tab, which provides the URL for the function.
 
