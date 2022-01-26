@@ -1,6 +1,6 @@
 # Google Cloud Function for IoT Device Provisioning
 
-This Cloud Function allows you to provision and synchronize a balena device with Google Cloud IoT Core in a secure and automated way. The Cloud Function may be called by a balena device, as seen in the [cloud-relay](https://github.com/balena-io-examples/cloud-relay) example.
+This Cloud Function allows you to provision and synchronize a balena device with Google Cloud IoT Core in a secure and automated way via an HTTP endpoint. The Cloud Function may be called by a balena device, as seen in the [cloud-relay](https://github.com/balena-io-examples/cloud-relay) example.
 
 | HTTP Method | Action |
 |-------------|--------|
