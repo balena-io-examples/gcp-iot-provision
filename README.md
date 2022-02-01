@@ -9,7 +9,7 @@ This Cloud Function allows you to provision and synchronize a balena device with
 
 ## Setup and Testing
 ### Google Cloud setup
-The Cloud Function interacts with Google Cloud IoT Core via a NodeJS [iot.DeviceManagerClient](https://cloud.google.com/nodejs/docs/reference/iot/latest/iot/v1.devicemanagerclient) operating with service account credentials. You must setup a Google Cloud project with an IoT Core registry. The service account must have the *Cloud IoT Provisioner* role to manage device records in the IoT Core registry. See the IoT Core [documentation](https://cloud.google.com/iot/docs/how-tos) for more background.
+The Cloud Function interacts with Google Cloud IoT Core via client code operating with service account credentials. You must setup a Google Cloud project with an IoT Core registry. The service account must have the *Cloud IoT Provisioner* role to manage device records in the IoT Core registry. See the IoT Core [documentation](https://cloud.google.com/iot/docs/how-tos) for more background.
 
 ### Development setup
 Clone this repo
