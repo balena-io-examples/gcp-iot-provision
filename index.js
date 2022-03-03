@@ -17,7 +17,7 @@ let registryPath = ''
  */
 export async function provision(req, res) {
     try {
-        const creds =  { email: process.env.RESIN_EMAIL, password: process.env.RESIN_PASSWORD }
+        const creds =  { email: process.env.BALENA_EMAIL, password: process.env.BALENA_PASSWORD }
         await balena.auth.login(creds)
 
         // Validate device with balenaCloud

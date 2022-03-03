@@ -21,8 +21,8 @@ The sections below show how to test the Cloud Function on a local test server an
 
 | Key         |    Value    |
 |-------------|-------------|
-| RESIN_EMAIL | for balena login |
-| RESIN_PASSWORD | for balena email address |
+| BALENA_EMAIL | for balena login |
+| BALENA_PASSWORD | for balena login |
 | GCP_PROJECT_ID | Google Cloud project ID, like `my-project-000000`|
 | GCP_REGION | Google Cloud region for registry, like `us-central1` |
 | GCP_REGISTRY_ID | Google Cloud registry ID you provided to create the registry |
@@ -34,7 +34,7 @@ The Google Functions Framework is a convenient tool for local testing.
 First, start a local HTTP server ([docs reference](https://cloud.google.com/functions/docs/running/function-frameworks)) using a script like below.
 
 ```
-export RESIN_EMAIL=<...>
+export BALENA_EMAIL=<...>
 ... <other environment variables from table above>
 export GCP_SERVICE_ACCOUNT=<...>
 
