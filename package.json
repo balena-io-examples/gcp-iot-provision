@@ -1,8 +1,8 @@
 {
   "name": "gcp-iot-provision",
   "private": false,
-  "version": "0.0.1",
-  "description": "Google Cloud function to provision device to IoT Core",
+  "version": "0.1.0",
+  "description": "Google Cloud function to provision a balena device to IoT Core",
   "main": "index.js",
   "type":"module",
   "dependencies": {
@@ -30,5 +30,5 @@
   "bugs": {
     "url": "https://github.com/balena-io-examples/gcp-iot-provision/issues"
   },
-  "homepage": "https://github.com/balena-io-examples/gcp-iot-provision#readme"
+  "homepage": "https://github.com/balena-io-examples/gcp-iot-provision"
 }
