@@ -6,7 +6,7 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
-    "@google-cloud/functions-framework": "^2.1.0",
+    "@google-cloud/functions-framework": "^3.1.2",
     "@google-cloud/iot": "^2.5.0",
     "balena-sdk": "^16.11.2"
   },
