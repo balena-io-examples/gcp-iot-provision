@@ -4,8 +4,19 @@ This Cloud Function allows you to provision and synchronize a balena device with
 
 | Method | Action |
 |-------------|--------|
-| POST | Provisions a balena device with IoT Core. First the function verifies the device UUID with balenaCloud. Then it creates a public/private key pair and adds the device to the registry. Finally the function pushes the private key to a balena device environment variable. |
+| POST | Provisions a balena device with IoT Core. First the function verifies the device UUID with balenaCloud. Then it creates a public/private key pair and adds the device to the registry. Finally the function sets balena device environment variables for these entities. |
 | DELETE | Removes a balena device from the IoT Core registry and removes the balena device environment variable for the private key. Essentially reverses the actions from provisioning with HTTP POST. |
+
+## Device Environment Variables
+Once the Cloud function has provisioned the device with GCP, it sets balena device environment variables as described below, which allow the device to connect to IoT Core. Some aspects of the variable values are common across devices, and are collected from the cloud function deployment.
+
+| Variable | Value |
+|----------|-------|
+| GCP_CLIENT_PATH | `<registry-path>/devices/<device-id>`<br><br> `<registry-path>` is derived from the project ID, GCP region, and registry ID<br>`<device-id>` is derived from the balena UUID for the device |
+| GCP_DATA_TOPIC_ROOT | `/devices/<device-id>` |
+| GCP_PROJECT_ID | Google Cloud project ID |
+| GCP_PRIVATE_KEY | Private key in PEM format, base64 encoded to eliminate line wrapping |
+
 
 ## Setup and Testing
 ### Google Cloud setup
