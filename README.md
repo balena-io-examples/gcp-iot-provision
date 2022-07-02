@@ -19,10 +19,10 @@ Once the Cloud function has provisioned the device with GCP, it sets balena devi
 
 
 ## Setup and Testing
-### Google Cloud setup
+### GCP setup
 The Cloud Function interacts with Google Cloud IoT Core via client code operating with service account credentials. You must setup a Google Cloud project with an IoT Core registry. The service account must have the *Cloud IoT Provisioner* role to manage device records in the IoT Core registry. See the IoT Core [documentation](https://cloud.google.com/iot/docs/how-tos) for more background.
 
-### Development setup
+### Workspace setup
 Clone this repo
 ```
 $ git clone https://github.com/balena-io-examples/gcp-iot-provision
